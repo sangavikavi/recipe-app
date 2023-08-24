@@ -25,17 +25,17 @@ function RecipeDetail() {
         fetchRecipesData()
     }, [id])
 
-    useEffect(()=>{
+    useEffect(() => {
         const fav = JSON.parse(localStorage.getItem('fav')) || []
-        const isRecipeFav = fav.some(rec =>  rec.id === recipe.id)
+        const isRecipeFav = fav.some(rec => rec.id === recipe.id)
         setIsFavorite(isRecipeFav)
     }, [recipe])
-    
+
     const handleToggleFav = () => {
         setIsFavorite(preVal => !preVal)
         const fav = JSON.parse(localStorage.getItem('fav')) || []
         const updateFav = isFavorite ? fav.filter(rec => rec.id !== recipe.id)
-        : [...fav, recipe]
+            : [...fav, recipe]
         localStorage.setItem('fav', JSON.stringify(updateFav))
     }
 
@@ -46,30 +46,30 @@ function RecipeDetail() {
                     <Link to={'/'}>Go back</Link>
                     <div className={styles.header}>
                         <h2>{recipe.title}</h2>
-                        <button 
-                        onClick={handleToggleFav}
-                        className={styles.favBtn}>
+                        <button
+                            onClick={handleToggleFav}
+                            className={styles.favBtn}>
                             {!isFavorite ? '+ Add to favorites' : '- remove from favorites'}
-                            </button>
+                        </button>
                     </div>
                     <div className={styles.content}>
-                        <img className={styles.image} src={recipe.image}  alt={recipe.title}/>
+                        <img className={styles.image} src={recipe.image} alt={recipe.title} />
                         <div className={styles.recipeInfo}>
-                                <span className={cx(styles.tag, styles.level)}>{recipe.level}</span>
-                                <span className={cx(styles.tag, styles.time)}>{recipe.time}</span>
-                                <span className={cx(styles.tag, styles.veg)}>{recipe.isVeg ? "Veg" : "Non-Veg"}</span>
-                            </div>
-                            <div className={styles.tags}>
-                                {recipe.ingredients.map((ingredient, ind) => (
-                                    <span key={ind} className={styles.ingredient}>{ingredient}</span>
-                                ))}
-                            </div>
-                            <h3>Instructions</h3>
-                            <ol className={styles.instructions}>
-                                {recipe.instructions.map((instruction, ind) => (
-                                    <li key={ind}>{instruction}</li>
-                                ))}
-                            </ol>
+                            <span className={cx(styles.tag, styles.level)}>{recipe.level}</span>
+                            <span className={cx(styles.tag, styles.time)}>{recipe.time}</span>
+                            <span className={cx(styles.tag, styles.veg)}>{recipe.isVeg ? "Veg" : "Non-Veg"}</span>
+                        </div>
+                        <div className={styles.tags}>
+                            {recipe.ingredients.map((ingredient, ind) => (
+                                <span key={ind} className={styles.ingredient}>{ingredient}</span>
+                            ))}
+                        </div>
+                        <h3 className={styles.heading}>Instructions</h3>
+                        <ol className={styles.instructions}>
+                            {recipe.instructions.map((instruction, ind) => (
+                                <li key={ind}>{instruction}</li>
+                            ))}
+                        </ol>
                     </div>
                 </div>
             }

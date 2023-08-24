@@ -11,6 +11,8 @@
     .header {
         display: flex;
         justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 20px;
 
         .favBtn {
             background-color: transparent;
@@ -27,12 +29,22 @@
     }
 
     .content {
+        .heading{
+            padding: 20px 20px 20px 0px;
+            font-size: 30px;
+        }
+        .instructions{
+            padding-top: 10px;
+            padding-left: 10px;
+            
+        }
         .image {
             width: 100%;
             height: auto;
             max-height: 400px;
             object-fit: cover;
             border-radius: 8px;
+            //margin: 20px;
         }
 
         .recipeInfo {
@@ -40,6 +52,7 @@
             margin: 15px 0;
             gap: 15px;
 
+           
             .tag {
                 display: inline-block;
                 padding: 5px 10px;
